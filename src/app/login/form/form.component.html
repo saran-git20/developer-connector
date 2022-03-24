@@ -1,0 +1,53 @@
+<form  #submitForm="ngForm" (ngSubmit)="onSubmitHandler(submitForm)" class="form">
+    <div class="form-group">
+      <input
+        type="email"
+        placeholder="Email Address"
+        name="email"
+        ngModel
+        #email="ngModel"
+        required
+        email
+      />
+      <div *ngIf="email.invalid && email.errors?.['required']" class="alert alert-danger">
+        Email cannot be empty
+      </div>
+      <div *ngIf="email.invalid && email.errors?.['email']" class="alert alert-danger">
+        Invalid email
+      </div>
+    </div>
+    <div class="form-group">
+      <input
+      autocomplete="off"
+        type="password"
+        placeholder="Password"
+        name="password"
+        ngModel
+        #password="ngModel"
+        required
+        minlength="6"
+        maxlength="12"
+        pattern="[a-zA-Z0-9]*"
+      />
+      <div *ngIf="password.invalid && password.errors?.['required']" class="alert alert-danger">
+        Password cannot be empty
+      </div>
+      <div *ngIf="password.invalid && password.errors?.['minlength']" class="alert alert-danger">
+        Password minimum should b 6
+      </div>
+
+      <div *ngIf="password.invalid && password.errors?.['maxlength']" class="alert alert-danger">
+        Password maximum shoud be 6
+      </div>
+
+      
+      <div *ngIf="password.invalid  && password.errors?.['pattern']" class="alert alert-danger">
+        only alphabets  and number is allowed
+      </div>
+
+
+
+      
+    </div>
+    <input type="submit" class="btn btn-primary" value="Login" />
+  </form>

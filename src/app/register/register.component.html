@@ -1,0 +1,54 @@
+<section class="container">
+  <h1 class="large text-primary">Sign Up</h1>
+  <p class="lead"><i class="fas fa-user"></i> Create Your Account</p>
+  <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmitHandler()" >
+    <div class="form-group">
+      <input type="text" formControlName="fullName" placeholder="Name" name="name" />
+      <div *ngIf="f['fullName'].errors?.['maxlength']" class="alert alert-danger">
+        maxlength is 10
+      </div> 
+      <div *ngIf="f['fullName'].errors?.['pattern']" class="alert alert-danger">
+        only number and alphabets
+     </div> 
+    </div>
+    <div class="form-group">
+      <input type="email" formControlName="email" placeholder="Email Address" name="email" />
+      <small class="form-text"
+        >This site uses Gravatar so if you want a profile image, use a
+        Gravatar email</small
+      >
+      <div *ngIf="f['email'].errors?.['required']" class="alert alert-danger">
+        email cannot be empty
+      </div> 
+    </div>
+    <div class="form-group">
+      <input
+        type="password"
+        formControlName="password"
+        placeholder="Password"
+        name="password"
+      />
+      <div *ngIf="f['password'].errors?.['required']" class="alert alert-danger">    
+        passward cannot be empty
+     </div> 
+   <div *ngIf="f['password'].errors?.['pattern']" class="alert alert-danger">
+    only number and alphabets
+  </div>
+    </div>
+    <div class="form-group">
+      <input
+      type="password"
+      formControlName="password2"
+      placeholder="Confirm Password"
+      name="password2"
+    />  
+    <div *ngIf="f['password2'].errors?.['required']" class="alert alert-danger">
+       passward2 cannot be empty
+    </div> 
+    </div>
+    <input type="submit" class="btn btn-primary" value="Register" />
+  </form>
+  <p class="my-1">
+    Already have an account? <a href="login.html">Sign In</a>
+  </p>
+</section>
